@@ -1,0 +1,31 @@
+<script>
+	function Tops (location, minFoot, maxFoot, percentEntering, donuts){
+		this.location = location;
+		this.minFoot = minFoot;
+		this.maxFoot = maxFoot;
+		this.percentEntering = percentEntering;
+		this.donuts = donuts;
+		this.amountOfDonuts = function (){
+			var footTraffic,
+					donutsNeeded;
+			for(var i = 7; i <= 17; i++){
+				console.log(this.location);
+	      footTraffic = Math.random() * (this.maxFoot - this.minFoot) + this.minFoot;
+				donutsNeeded = footTraffic * this.percentEntering * this.donuts;
+			  console.log(donutsNeeded);
+			}
+
+		}
+	}
+		var downtown = new Tops ("Downtown", 80, 220, .1, 4 );
+			downtown.amountOfDonuts();
+		var capitolHill = new Tops ("Capitol HilL", 5, 45, .45, 2);
+			capitolHill.amountOfDonuts();
+		var slu = new Tops ("SLU", 180, 250, .05, 6);
+			slu.amountOfDonuts();
+		var wedgewood = new Tops ("Wedgewood", 20, 60, .2, 1.5);
+			wedgewood.amountOfDonuts();
+		var ballard = new Tops("Ballard", 25, 175, .33, 1);
+			ballard.amountOfDonuts();
+
+</script>
