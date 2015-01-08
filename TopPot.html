@@ -1,31 +1,40 @@
 <script>
-	function Tops (location, minFoot, maxFoot, percentEntering, donuts){
-		this.location = location;
-		this.minFoot = minFoot;
-		this.maxFoot = maxFoot;
-		this.percentEntering = percentEntering;
-		this.donuts = donuts;
-		this.amountOfDonuts = function (){
-			var footTraffic,
-					donutsNeeded;
-			for(var i = 7; i <= 17; i++){
-				console.log(this.location);
-	      footTraffic = Math.random() * (this.maxFoot - this.minFoot) + this.minFoot;
-				donutsNeeded = footTraffic * this.percentEntering * this.donuts;
-			  console.log(donutsNeeded);
-			}
+  var stores = [], times;
+  times = ["7 am", "8 am", "9 am", "10 am", "11 am", "12 pm", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm"];
+  function Tops(location, minFoot, maxFoot, percentEntering, donuts) {
+    this.location        = location;
+    this.minFoot         = minFoot;
+    this.maxFoot         = maxFoot;
+    this.donuts          = donuts;
+    this.percentEntering = percentEntering;
 
-		}
-	}
-		var downtown = new Tops ("Downtown", 80, 220, .1, 4 );
-			downtown.amountOfDonuts();
-		var capitolHill = new Tops ("Capitol HilL", 5, 45, .45, 2);
-			capitolHill.amountOfDonuts();
-		var slu = new Tops ("SLU", 180, 250, .05, 6);
-			slu.amountOfDonuts();
-		var wedgewood = new Tops ("Wedgewood", 20, 60, .2, 1.5);
-			wedgewood.amountOfDonuts();
-		var ballard = new Tops("Ballard", 25, 175, .33, 1);
-			ballard.amountOfDonuts();
+    this.amountOfDonuts = function() {
+      var footTraffic,
+          hourlyDonutsNeeded,
+          dailyDonutsNeeded = 0;
+      for(var i = 0; i <= 10; i++){
+        footTraffic = Math.random() * (this.maxFoot - this.minFoot) + this.minFoot;
+        hourlyDonutsNeeded = Math.ceil(footTraffic * this.percentEntering * this.donuts);
+        dailyDonutsNeeded += hourlyDonutsNeeded;
+        console.log(this.location + " is projected to sell " + hourlyDonutsNeeded + " donuts during " + times[i]);
+      };
+      console.log("Total for the day: " + dailyDonutsNeeded);
+    };
+  }
+
+  stores.push(new Tops("Downtown",     80,  220, .1,  4   ));
+  stores.push(new Tops("Capitol HilL", 5,   45,  .45, 2   ));
+  stores.push(new Tops("SLU",          180, 250, .05, 6   ));
+  stores.push(new Tops("Wedgewood",    20,  60,  .2,  1.5 ));
+  stores.push(new Tops("Ballard",      25,  175, .33, 1   ));
+  stores.push(new Tops("Downtown2",    80,  220, .1,  4   ));
+  stores.push(new Tops("Bellevue",     5,   45,  .45, 2   ));
+  stores.push(new Tops("Issaquah",     180, 250, .05, 6   ));
+  stores.push(new Tops("Mill Creek",   20,  60,  .2,  1.5 ));
+  stores.push(new Tops("Ballarrrrrd",  25,  175, .33, 1   ));
+  
+  for(index in stores) {
+    stores[index].amountOfDonuts();
+  }
 
 </script>
